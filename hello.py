@@ -10,9 +10,9 @@ import psycopg2.extras
 app = Flask(__name__)
 app.secret_key = "bananabread"
 
-connection = psycopg2.connect(user='postgres',
+connection = psycopg2.connect(user='masterUsername',
                                 password='Oftheworld1!',
-                                host='localhost',
+                                host='rds-postgresql-10mintutorial.cpgbioavvyfo.us-west-1.rds.amazonaws.com',
                                 port='5432',
                                 database='gbts')
 
