@@ -22,7 +22,7 @@ def index():
     t = "SELECT * FROM Tree"
     cursor.execute(t)
     list_users = cursor.fetchall()
-    # return render_template('index.html', list_users = list_users)
+    return render_template('index.html', list_users = list_users)
     print(list_users)
     return(list_users)
 
