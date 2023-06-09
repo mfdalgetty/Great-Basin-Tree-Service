@@ -4,11 +4,7 @@
     <h1>{% block title %} Insert into Trees {% endblock %}</h1>
         <div class="form-box">
             <form method="POST" action="/insert">
-                <div>
-                  <label for="tree_id">Tree ID:</label>
-                  <input type="number" name="tree_id" id="tree_id" required>
-                </div>
-              
+
                 <div>
                   <label for="health">Health:</label>
                   <input type="text" name="health" pattern="^(Healthy|Average|Poor)$" required title="Please enter a valid value (Healthy, Average, or Poor)">
@@ -31,14 +27,18 @@
               
                 <div>
                   <label for="tree_species">Tree Species:</label>
-                  <input type="text" name="tree_species" id="tree_species" required>
+                  <input type="text" name="tree_species" id="tree_species" maxlength="100" required>
                 </div>
               
-                <div>
-                  <label for="address">Address:</label>
-                  <input type="text" name="address" id="address" required>
+                <div class="dropdown">
+                    <label for="address">Address:</label>
+                    <select name="address" id="address">
+                    {% for address in property %}
+                    <option value="{{address}}">{{address}}</option>
+                    {% endfor %}
+                    </select>
                 </div>
-              
+                
                 <input type="submit" value="Insert">
               </form>
         </div>
