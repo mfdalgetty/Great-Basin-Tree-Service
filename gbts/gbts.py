@@ -14,6 +14,12 @@ connection = psycopg2.connect(user='masterUsername',
 
 cursor = connection.cursor(cursor_factory=psycopg2.extras.DictCursor)
 
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+
+
 @app.route('/insert', methods=['GET','POST'])
 def insert():
     conn = connection
@@ -59,14 +65,10 @@ def insert():
         except psycopg2.Error as e:
             return "Headache!"
         
-        finally:
-            cur.close()
-            conn.close()
     return render_template('insert_form.html')
 
 @app.route('/trees')
 def trees():
-    conn = connection
     cur = cursor
     t = "SELECT * FROM Tree"
     cur.execute(t)
