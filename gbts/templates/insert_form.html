@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Insert into Trees {% endblock %}</h1>
+        <div class="form-box">
+            <form method="POST" action="/insert">
+                <div>
+                  <label for="tree_id">Tree ID:</label>
+                  <input type="number" name="tree_id" id="tree_id" required>
+                </div>
+              
+                <div>
+                  <label for="health">Health:</label>
+                  <input type="text" name="health" pattern="^(Healthy|Average|Poor)$" required title="Please enter a valid value (Healthy, Average, or Poor)">
+                </div>
+              
+                <div>
+                  <label for="estimated_age">Estimated Age:</label>
+                  <input type="number" name="estimated_age" id="estimated_age" required>
+                </div>
+              
+                <div>
+                  <label for="work_performed">Work Performed:</label>
+                  <input type="text" name="work_performed" id="work_performed" required>
+                </div>
+              
+                <div>
+                  <label for="date">Date:</label>
+                  <input type="date" name="date" id="date" required>
+                </div>
+              
+                <div>
+                  <label for="tree_species">Tree Species:</label>
+                  <input type="text" name="tree_species" id="tree_species" required>
+                </div>
+              
+                <div>
+                  <label for="address">Address:</label>
+                  <input type="text" name="address" id="address" required>
+                </div>
+              
+                <input type="submit" value="Insert">
+              </form>
+        </div>
+        <h1> {{ success_message }} 
+{% endblock %}

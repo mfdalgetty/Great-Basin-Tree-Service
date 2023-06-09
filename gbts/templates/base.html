@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> {% block title %} {% endblock %} </title>
+    <style>
+                nav a {
+            color: #226c38;
+            font-size: 3em;
+            margin-left: 50px;
+            text-decoration: none;
+        }
+
+            .tb { border-collapse: collapse; width:300px; }
+            .tb th, .tb td { padding: 5px; border: solid 1px #777; }
+            .tb th { background-color: rgb(230, 173, 215); }
+
+            .form-box {
+                border: 1px solid #ccc;
+                padding: 20px;
+                border-radius: 5px;
+                width: 300px;
+        }
+
+            .form-box div {
+                margin-bottom: 10px;
+        }
+
+            .form-box label {
+                display: block;
+        }
+
+            .form-box input[type="text"] {
+                width: 100%;
+                padding: 5px;
+                border: 1px solid #ccc;
+                border-radius: 3px;
+        }
+
+            .form-box input[type="submit"] {
+                margin-top: 10px;
+                padding: 5px 10px;
+                background-color: #4CAF50;
+                color: white;
+                border: none;
+                border-radius: 3px;
+                cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="{{url_for('trees')}}">Great Basin Tree Service</a>
+    </nav>
+    <hr>
+    <div class="'content">
+        {% block content %} {% endblock %}
+    </div>
+</body>
+</html>
