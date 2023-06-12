@@ -53,12 +53,22 @@ def trees():
     trees = cur.fetchall()
     return render_template('trees.html', trees = trees)
 
-@app.route('/inventory')
+@app.route('/inventory', methods=['GET', 'POST'])
 def inventory():
     cursor = CONNECTION.cursor(cursor_factory=psycopg2.extras.DictCursor)
-    t = "SELECT * FROM Inventory"
+    t = "SELECT * FROM Inventory ORDER BY Product_ID"
+
+    if request.method == 'POST':
+
+        row_id = request.form['row_id']
+        q = request.form['quantity']
+
+        cursor.execute("UPDATE Inventory SET Quantity = %s WHERE SKU = %s", (q, row_id))
+        CONNECTION.commit()
+
     cursor.execute(t)
     inventory = cursor.fetchall()
+
     return render_template('inventory.html', inventory = inventory)
 
 if __name__ == "__main__":
