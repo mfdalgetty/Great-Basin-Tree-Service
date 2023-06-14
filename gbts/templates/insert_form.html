@@ -3,7 +3,7 @@
 {% block content %}
     <h1>{% block title %} Insert into Trees {% endblock %}</h1>
         <div class="form-box">
-            <form method="POST" action="/insert">
+            <form method="POST" action="/login/insert">
 
                 <div>
                   <label for="health">Health:</label>
@@ -42,5 +42,5 @@
                 <input type="submit" value="Insert">
               </form>
         </div>
-        <h1> {{ success_message }} 
+        <h1>
 {% endblock %}
