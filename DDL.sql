@@ -218,11 +218,7 @@ WHERE Appointment_ID = NULL;
 DELETE FROM Quarterly_sales
 WHERE Quarter = 'Q4' AND Year = 2022;
 
-SELECT * FROM Quarterly_sales;
-
 -- Inventory History. This table is only to be modified by trigger.
-
-SELECT * FROM Inventory_history
 
 INSERT INTO Inventory_history (Product_ID, Product_cost, Units, Company_name, SKU, Product_name, Old_quantity, New_quantity, Change_time)
 VALUES 	(1, 9.99, 'Liters', 'TreeCare Products Inc.', 'TC001', 'Rootmax', 8, NULL, NULL),
@@ -343,8 +339,6 @@ BEGIN
 END;	
 $$
 LANGUAGE 'plpgsql';
-
-SELECT sales(1)
 
 -- Creation of Stored Procedure update_inventory()
 

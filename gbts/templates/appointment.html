@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Appointments {% endblock %}</h1>
+    <table>
+    <div class="col-md-8">
+        <table id="example" class="tb" style="width:100%">
+            <thead>
+                <tr>
+                    <td>Appointment ID</td>
+                    <td>Employee ID</td>
+                    <td>Customer ID</td>
+                    <td>Distance</td>
+                    <td>Work Performed</td>
+                    <td>Date</td>
+                    <td>Sales Price</td>
+                    <td>Product ID</td>
+                    <td>Quantity Used</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for appointment in appointments %}
+                <tr>
+                    <td>{{appointment.appointment_id}}</td>
+                    <td>{{appointment.employee_id}}</td>
+                    <td>{{appointment.customer_id}}</td>
+                    <td>{{appointment.distance}}</td>
+                    <td>{{appointment.work_performed}}</td>
+                    <td>{{appointment.date}}</td>
+                    <td>{{appointment.sales_price}}</td>
+                    <td>{{appointment.product_id}}</td>
+                    <td>{{appointment.quantity_used}}
+                        <form method="POST" action="/appointment">
+                            <div>
+                                <input type="hidden" name="row_id" value="{{ appointment.appointment_id }}">
+                                <label for="quantity">Quantity Used</label>
+                                <input type="decimal" name="quantity_used" id="quantity_used" required>
+                                <button class="btn btn-success float-right" type="submit">Update</button>
+                            </div>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+      </table>
+    </div>
+{% endblock %}

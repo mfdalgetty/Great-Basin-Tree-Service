@@ -1,8 +1,6 @@
 from flask import Flask, render_template, request, flash
 import psycopg2
 import psycopg2.extras
-from psycopg2.errorcodes import UNIQUE_VIOLATION
-from psycopg2 import errors
 
 app = Flask(__name__)
 
@@ -14,13 +12,7 @@ CONNECTION = psycopg2.connect(user='masterUsername',
 
 CURSOR = CONNECTION.cursor(cursor_factory=psycopg2.extras.DictCursor)
 
-@app.route('/')
-def index():
-    return render_template('index.html')
-
-
-
-@app.route('/insert', methods=['GET','POST'])
+@app.route('/', methods=['GET','POST'])
 def insert():
 
     if request.method == 'POST':
@@ -53,22 +45,30 @@ def trees():
     trees = cur.fetchall()
     return render_template('trees.html', trees = trees)
 
-@app.route('/inventory', methods=['GET', 'POST'])
-def inventory():
+@app.route('/appointment', methods=['GET', 'POST'])
+def appointment():
     cursor = CONNECTION.cursor(cursor_factory=psycopg2.extras.DictCursor)
-    t = "SELECT * FROM Inventory ORDER BY Product_ID"
+    t = "SELECT * FROM Appointment ORDER BY Appointment_ID"
 
     if request.method == 'POST':
 
         row_id = request.form['row_id']
-        q = request.form['quantity']
+        q = request.form['quantity_used']
 
-        cursor.execute("UPDATE Inventory SET Quantity = %s WHERE SKU = %s", (q, row_id))
+        cursor.execute("UPDATE Appointment SET Quantity_used = %s WHERE Appointment_ID = %s", (q, row_id))
         CONNECTION.commit()
 
     cursor.execute(t)
-    inventory = cursor.fetchall()
+    appointments = cursor.fetchall()
 
+    return render_template('appointment.html', appointments = appointments)
+
+@app.route('/inventory')
+def inventory():
+    cur = CURSOR
+    inv = "SELECT * FROM Inventory ORDER BY Product_ID"
+    cur.execute(inv)
+    inventory = cur.fetchall()
     return render_template('inventory.html', inventory = inventory)
 
 if __name__ == "__main__":

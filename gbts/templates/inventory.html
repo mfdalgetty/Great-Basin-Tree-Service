@@ -10,6 +10,7 @@
                     <td>Product ID</td>
                     <td>Product Cost</td>
                     <td>Quantity</td>
+                    <td>Units</td>
                     <td>Company Name</td>
                     <td>SKU</td>
                     <td>Product Name</td>
@@ -20,16 +21,8 @@
                 <tr>
                     <td>{{inventory.product_id}}</td>
                     <td>{{inventory.product_cost}}</td>
-                    <td>{{inventory.quantity}}
-                        <form method="POST" action="/inventory">
-                            <div>
-                                <input type="hidden" name="row_id" value="{{ inventory.sku }}">
-                                <label for="quantity">Updated Quantity</label>
-                                <input type="number" name="quantity" id="quantity" required>
-                                <button class="btn btn-success float-right" type="submit">Update</button>
-                            </div>
-                        </form>
-                    </td>
+                    <td>{{inventory.quantity}}</td>
+                    <td>{{inventory.units}}</td>
                     <td>{{inventory.company_name}}</td>
                     <td>{{inventory.sku}}</td>
                     <td>{{inventory.product_name}}</td>
