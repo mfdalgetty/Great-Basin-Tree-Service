@@ -2,8 +2,8 @@ from flask import Flask, render_template, request, flash, session, flash, redire
 import psycopg2
 import psycopg2.extras
 
-app = Flask(__name__, template_folder='templates')
-app.secret_key = 'bananabread'
+application = Flask(__name__, template_folder='templates')
+application.secret_key = 'bananabread'
 
 CONNECTION = psycopg2.connect(user='masterUsername',
                                 password='Oftheworld1!',
@@ -13,13 +13,13 @@ CONNECTION = psycopg2.connect(user='masterUsername',
 
 CURSOR = CONNECTION.cursor(cursor_factory=psycopg2.extras.DictCursor)
 
-@app.route('/')
+@application.route('/')
 def home():
     if 'loggedin' in session:
         return render_template('insert_form.html', username=session['username'])
     return redirect(url_for('login'))
 
-@app.route('/login/', methods=['GET', 'POST'])
+@application.route('/login/', methods=['GET', 'POST'])
 def login():
 
     cur = CURSOR
@@ -44,7 +44,7 @@ def login():
 
     return render_template('login.html')
 
-@app.route('/login/logout')   
+@application.route('/login/logout')   
 def logout():
     session.pop('loggedin', None)
     session.pop('username', None)
@@ -52,7 +52,7 @@ def logout():
     return redirect(url_for('login'))
 
 
-@app.route('/login/insert', methods=['GET','POST'])
+@application.route('/login/insert', methods=['GET','POST'])
 def insert():
 
     if 'loggedin' in session:
@@ -83,7 +83,7 @@ def insert():
     
     return redirect(url_for('login'))
 
-@app.route('/login/trees')
+@application.route('/login/trees')
 def trees():
         
     if 'loggedin' in session:
@@ -96,7 +96,7 @@ def trees():
     
     return redirect(url_for('login'))
 
-@app.route('/login/appointment', methods=['GET', 'POST'])
+@application.route('/login/appointment', methods=['GET', 'POST'])
 def appointment():
         
     if 'loggedin' in session:
@@ -119,7 +119,7 @@ def appointment():
     
     return redirect(url_for('login'))
 
-@app.route('/login/inventory')
+@application.route('/login/inventory')
 def inventory():
 
     if 'loggedin' in session:
@@ -133,4 +133,4 @@ def inventory():
     return redirect(url_for('login'))
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5000)
+    application.run(host='0.0.0.0', port=5000)
