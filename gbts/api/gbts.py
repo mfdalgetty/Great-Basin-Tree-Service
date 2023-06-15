@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, flash, session, flash, redire
 import psycopg2
 import psycopg2.extras
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='templates')
 app.secret_key = 'bananabread'
 
 CONNECTION = psycopg2.connect(user='masterUsername',
@@ -133,4 +133,4 @@ def inventory():
     return redirect(url_for('login'))
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000)
