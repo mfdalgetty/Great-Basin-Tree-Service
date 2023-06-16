@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Trees {% endblock %}</h1>
+    <div class="col-md-8">
+        <table id="example" class="tb" style="width:100%">
+            <thead>
+                <tr>
+                    <td>Tree ID</td>
+                    <td>Health</td>
+                    <td>Estimated Age</td>
+                    <td>Work Performed</td>
+                    <td>Date</td>
+                    <td>Tree Species</td>
+                    <td>Address</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for tree in trees %}
+                <tr>
+                    <td>{{tree.tree_id}}</td>
+                    <td>{{tree.health}}</td>
+                    <td>{{tree.estimated_age}}</td>
+                    <td>{{tree.work_performed}}</td>
+                    <td>{{tree.date}}</td>
+                    <td>{{tree.tree_species}}</td>
+                    <td>{{tree.address}}</td>
+                    <!-- Add more table cells for each column in your_table -->
+                </tr>
+                {% endfor %}
+            </tbody>
+      </table>
+    </div>
+{% endblock %}
