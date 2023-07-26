@@ -42,8 +42,9 @@ Once the deployment is complete, visit the URL provided by Heroku to see your ap
 
 The folder structure of this Flask application is as follows:
 
-└── Application /n
-    ├── app.py /n
+└── Application
+
+    ├── app.py
     ├── Procfile
     ├── README.txt
     ├── requirements.txt
