@@ -1,5 +1,5 @@
 # Great-Basin-Tree-Service
-This project was completed as a capstone for my Master's in Data Science. The goal was to create a relational database for a small tree company. This database could be updated in the field by the use of a webapp which I coded in Flask and Python
+This project was completed as a capstone for my Master's in Data Science. The goal was to create a relational database for a small tree company. This database could be updated in the field by the use of a webapp which I coded in Flask and Python.
 
 ## Prerequisites
 
