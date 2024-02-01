@@ -5,12 +5,11 @@ This project was completed as a capstone for my Master's in Data Science. The go
 
 Before running the application, make sure you have the following prerequisites installed:
 
-Python (version 3.11)
-PostgreSQL
-psycopg2 library (can be installed using pip install psycopg2)
-Heroku CLI (command-line interface)
-
-	All other libraries are included in the requirements.txt file
+* Python (version 3.11)
+* PostgreSQL
+* psycopg2 library (can be installed using pip install psycopg2)
+* Heroku CLI (command-line interface)
+  * All other libraries are included in the requirements.txt file
 
 ## Setting up the Database
 
@@ -23,10 +22,22 @@ Update the database connection details in the Flask app code.
 Clone the repository and navigate to the project directory.	
 Create a virtual environment: python -m venv 
 Activate the virtual environment:
-On Windows: venv\Scripts\activate
-On macOS/Linux: source venv/bin/activate
-Install the required dependencies: pip install -r requirements.txt.
-Run the Flask application: python app.py.
+On Windows: 
+
+	venv\Scripts\activate
+
+On macOS/Linux: 
+
+	source venv/bin/activate
+ 
+Install the required dependencies: 
+
+	pip install -r requirements.txt.
+ 
+Run the Flask application: 
+
+	python app.py.
+ 
 Open your web browser and access http://localhost:5000 to see the application in action.
 
 ## Deployment to Heroku
@@ -42,19 +53,19 @@ Once the deployment is complete, visit the URL provided by Heroku to see your ap
 
 The folder structure of this Flask application is as follows:
 
-└── Application
-    ├── app.py
-    ├── Procfile
-    ├── README.txt
-    ├── requirements.txt
-    └── Templates
-        ├── appointment.html
-        ├── base.html
-        ├── index.html
-        ├── insert_form.html
-        ├── inventory.html
-        ├── login.html
-        └── trees.html
+	└── Application
+	    ├── app.py
+	    ├── Procfile
+	    ├── README.txt
+	    ├── requirements.txt
+	    └── Templates
+	        ├── appointment.html
+	        ├── base.html
+	        ├── index.html
+	        ├── insert_form.html
+	        ├── inventory.html
+	        ├── login.html
+	        └── trees.html
 
 ## Troubleshooting
 
